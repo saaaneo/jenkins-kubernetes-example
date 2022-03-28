@@ -11,7 +11,7 @@ pipeline {
         }
 	stage('Docker Build') {
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'docker_host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd /opt/docker; docker build -t aalhad/nodejsapp-1.0:latest .; docker push aalhad/nodejsapp-1.0:latest; docker rmi -f aalhad/nodejsapp-1.0:latest', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'package.json; server.js')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'docker_host', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd /opt/docker; docker build -t aalhad/nodejsapp-1.0:latest .; docker push aalhad/nodejsapp-1.0:latest; docker rmi -f aalhad/nodejsapp-1.0:latest', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '//opt//docker', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'package.json, server.js')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
     	stage('Deploy App on k8s') {
