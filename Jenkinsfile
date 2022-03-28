@@ -22,7 +22,7 @@ pipeline{
                  withCredentials([string(credentialsId: 'dockerhub_id', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u aalhad -p ${dockerhubpwd}'
                  }  
-                 sh 'docker push devopshint/nodejsapp-1.0:latest'
+                 sh 'docker push aalhad/nodejsapp-1.0:latest'
                 }
             }
         }
