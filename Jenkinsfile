@@ -33,7 +33,7 @@ pipeline{
             sh "scp -o StrictHostKeyChecking=no nodejsapp.yaml ubuntu@172.31.94.113:/home/ubuntu"
             script {
                 try{
-                    sh "ssh ubuntu@172.31.94.113 kubectl create -f ."
+                    sh "ssh ubuntu@172.31.94.113 kubectl apply -f ."
                 }catch(error){
                     sh "ssh ubuntu@172.31.94.113 kubectl create -f ."
 					}
