@@ -17,12 +17,10 @@ pipeline {
 	stage('Dockerhub Push') {
 	    steps {
 		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: '', usernameVariable: '')]) {
-    			{
                      		sh 'docker login ${credentialsId}'
                  		sh 'docker push aalhad/nodejsapp-1.0:latest'
                 	}
-		}
-	     }
+	          }
     	}
     	stage('Deploy App on k8s') {
       		steps {
