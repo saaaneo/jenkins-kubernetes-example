@@ -16,7 +16,7 @@ pipeline {
         }
     	stage('Deploy App on k8s') {
       		steps {
-         	   sshPublisher(publishers: [sshPublisherDesc(configName: 'kube_master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/aalhad', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'nodejsapp.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+         	   sshPublisher(publishers: [sshPublisherDesc(configName: 'kube_master', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'nodejsapp.yaml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
         	    script {
           	      try{
           	          	sh "ssh aalhad@10.0.61.137 kubectl create -f ."
