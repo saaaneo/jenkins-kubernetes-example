@@ -19,9 +19,8 @@ pipeline {
 		withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: '', usernameVariable: '')]) {
     			{
                      		sh 'docker login ${credentialsId}'
-                       }  
-                 sh 'docker push aalhad/nodejsapp-1.0:latest'
-                }
+                 		sh 'docker push aalhad/nodejsapp-1.0:latest'
+                	}
 		}
 	     }
     	}
